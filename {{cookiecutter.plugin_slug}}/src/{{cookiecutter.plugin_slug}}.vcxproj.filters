@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="AboutDialog\AboutDialog.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutDialog\Hyperlinks.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AboutDialog\AboutDialog.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AboutDialog\Hyperlinks.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Npp\menuCmdID.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Npp\Notepad_plus_msgs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Npp\PluginInterface.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AboutDialog\resource.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Npp\Sci_Position.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Npp\SciLexer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScintillaGateway.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Version.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Npp\Scintilla.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AboutDialog\Version.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="AboutDialog\resource.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{ef583bd3-0985-497a-9bd0-c7cc397d0108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{9e19a8e8-4efd-4ee6-bbd6-bc1d47f7f5cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{7b271ac2-506e-456c-a1cb-5b01150e073c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

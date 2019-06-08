@@ -1,0 +1,63 @@
+version: 1.0.0.{build}
+image: Visual Studio 2017
+
+platform:
+  - x64
+  - Win32
+
+configuration:
+  - Release
+  - Debug
+
+install:
+  - if "%platform%"=="x64" set archi=amd64
+  - if "%platform%"=="x64" set build_platform=x64
+
+  - if "%platform%"=="Win32" set archi=x86
+  - if "%platform%"=="Win32" set build_platform=Win32
+
+  - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %archi%
+
+build:
+  parallel: true
+  verbosity: minimal
+
+build_script:
+  - cd "%APPVEYOR_BUILD_FOLDER%"
+  - msbuild {{ cookiecutter.plugin_slug }}.sln /p:Configuration="%configuration%" /p:Platform="%build_platform%" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
+after_build:
+  - cd "%APPVEYOR_BUILD_FOLDER%"
+  - ps: >-
+
+      $BuildPath = "$($env:APPVEYOR_BUILD_FOLDER)\bin\$($env:CONFIGURATION)_$($env:BUILD_PLATFORM)"
+
+      Push-AppveyorArtifact "$($BuildPath)\{{ cookiecutter.plugin_slug }}.dll" -FileName {{ cookiecutter.plugin_slug }}.dll
+
+      if ($($env:APPVEYOR_REPO_TAG) -eq "true" -and $env:CONFIGURATION -eq "Release") {
+        mkdir {{ cookiecutter.plugin_slug }}
+        Move-Item -Path "$($BuildPath)\{{ cookiecutter.plugin_slug }}.dll" -Destination .\{{ cookiecutter.plugin_slug }}
+        if ($env:BUILD_PLATFORM -eq "x64"){
+          $ZipFileName = "{{ cookiecutter.plugin_slug }}_$($env:APPVEYOR_REPO_TAG_NAME)_x64.zip"
+        }
+        if ($env:BUILD_PLATFORM -eq "Win32"){
+          $ZipFileName = "{{ cookiecutter.plugin_slug }}_$($env:APPVEYOR_REPO_TAG_NAME).zip"
+        }
+        7z a $ZipFileName .\{{ cookiecutter.plugin_slug }}
+      }
+
+artifacts:
+  - path: {{ cookiecutter.plugin_slug }}*.zip
+    name: releases
+
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: TODO ADD GITHUB KEY HERE
+  artifact: releases
+  draft: true
+  prerelease: false
+  force_update: true
+  on:
+    appveyor_repo_tag: true
+    configuration: Release

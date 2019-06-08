@@ -1,0 +1,7 @@
+{
+	"plugin_name": "My Plugin",
+	"plugin_slug": "{{cookiecutter.plugin_name.replace('-', '').replace(' ', '')}}",
+	"description": "My very first plugin for Notepad++",
+	"full_name": "John Smith",
+	"email": "john.smith@email.com"
+}
