@@ -32,7 +32,7 @@ typedef struct {
 typedef int Colour;
 typedef int KeyModifier;
 
-class ScintillaGateway final {
+class ScintillaEditor final {
 private:
 	HWND scintilla = nullptr;
 	SciFnDirect directFunction = nullptr;
@@ -43,9 +43,9 @@ private:
 	}
 
 public:
-	ScintillaGateway() {}
+	ScintillaEditor() {}
 
-	explicit ScintillaGateway(HWND scintilla) {
+	explicit ScintillaEditor(HWND scintilla) {
 		SetScintillaInstance(scintilla);
 	}
 

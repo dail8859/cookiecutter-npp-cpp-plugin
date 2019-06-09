@@ -159,7 +159,7 @@ def printLexGatewayFile(f):
 def main():
 	f = Face.Face()
 	f.ReadFromFile("Scintilla.iface")
-	Regenerate("../{{cookiecutter.plugin_slug}}/src/ScintillaGateway.h", "/* ", printLexGatewayFile(f))
+	Regenerate("../{{cookiecutter.plugin_slug}}/src/ScintillaEditor.h", "/* ", printLexGatewayFile(f))
 
 if __name__ == "__main__":
 	main()

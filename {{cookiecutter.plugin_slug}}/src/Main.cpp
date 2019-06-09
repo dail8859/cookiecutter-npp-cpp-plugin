@@ -19,7 +19,7 @@
 #include "AboutDialog.h"
 #include "resource.h"
 #include "PluginInterface.h"
-#include "ScintillaGateway.h"
+#include "ScintillaEditor.h"
 #include "menuCmdID.h"
 
 // The handle to the current DLL Module
@@ -27,11 +27,11 @@ static HANDLE dllModule;
 // Data provided by Notepad++
 static NppData nppData;
 // The main (left) editor
-static ScintillaGateway editor1;
+static ScintillaEditor editor1;
 // The secondary (right) editor
-static ScintillaGateway editor2;
+static ScintillaEditor editor2;
 // References the current editor
-static ScintillaGateway &editor = editor1;
+static ScintillaEditor &editor = editor1;
 
 // Forward declaration of menu callbacks
 static void execute{{ cookiecutter.plugin_slug }}();
