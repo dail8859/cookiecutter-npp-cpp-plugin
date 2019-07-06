@@ -35,15 +35,13 @@ after_build:
       Push-AppveyorArtifact "$($BuildPath)\{{ cookiecutter.plugin_slug }}.dll" -FileName {{ cookiecutter.plugin_slug }}.dll
 
       if ($($env:APPVEYOR_REPO_TAG) -eq "true" -and $env:CONFIGURATION -eq "Release") {
-        mkdir {{ cookiecutter.plugin_slug }}
-        Move-Item -Path "$($BuildPath)\{{ cookiecutter.plugin_slug }}.dll" -Destination .\{{ cookiecutter.plugin_slug }}
         if ($env:BUILD_PLATFORM -eq "x64"){
           $ZipFileName = "{{ cookiecutter.plugin_slug }}_$($env:APPVEYOR_REPO_TAG_NAME)_x64.zip"
         }
         if ($env:BUILD_PLATFORM -eq "Win32"){
           $ZipFileName = "{{ cookiecutter.plugin_slug }}_$($env:APPVEYOR_REPO_TAG_NAME).zip"
         }
-        7z a $ZipFileName .\{{ cookiecutter.plugin_slug }}
+        7z a $ZipFileName "$($BuildPath)\{{ cookiecutter.plugin_slug }}.dll"
       }
 
 artifacts:
