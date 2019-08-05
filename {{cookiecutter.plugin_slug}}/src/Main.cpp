@@ -51,7 +51,7 @@ static void execute{{ cookiecutter.plugin_slug }}() {
 	SendMessage(nppData._nppHandle, NPPM_MENUCOMMAND, 0, IDM_FILE_NEW);
 
 	// Get the current file count
-	int file_count = SendMessage(nppData._nppHandle, NPPM_GETNBOPENFILES, 0, PRIMARY_VIEW);
+	LRESULT file_count = SendMessage(nppData._nppHandle, NPPM_GETNBOPENFILES, 0, PRIMARY_VIEW);
 
 	// Add some text to the new document
 	editor.SetText("There are " + std::to_string(file_count) + " open files.");
