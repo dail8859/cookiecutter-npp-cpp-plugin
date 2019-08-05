@@ -31,7 +31,7 @@ static ScintillaEditor editor1;
 // The secondary (right) editor
 static ScintillaEditor editor2;
 // References the current editor
-static ScintillaEditor &editor = editor1;
+static ScintillaEditor editor;
 
 // Forward declaration of menu callbacks
 static void execute{{ cookiecutter.plugin_slug }}();
@@ -85,6 +85,8 @@ extern "C" __declspec(dllexport) void setInfo(NppData notepadPlusData) {
 	// Set these as early as possible so they are in a valid state
 	editor1.SetScintillaInstance(nppData._scintillaMainHandle);
 	editor2.SetScintillaInstance(nppData._scintillaSecondHandle);
+
+	editor = editor1;
 }
 
 extern "C" __declspec(dllexport) const wchar_t *getName() {
