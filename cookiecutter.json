@@ -3,5 +3,7 @@
 	"plugin_slug": "{{cookiecutter.plugin_name.replace('-', '').replace(' ', '')}}",
 	"description": "My very first plugin for Notepad++",
 	"full_name": "John Smith",
-	"email": "john.smith@email.com"
+	"email": "john.smith@email.com",
+	"npp_path_x86": "C:\\Program Files (x86)\\Notepad++",
+	"npp_path_x64": "C:\\Program Files\\Notepad++"
 }
