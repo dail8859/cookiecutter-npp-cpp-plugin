@@ -1,5 +1,7 @@
 # cookiecutter-npp-cpp-plugin
 
+[![Build status](https://ci.appveyor.com/api/projects/status/rgv7n4sjfld3pysl?svg=true)](https://ci.appveyor.com/project/dail8859/cookiecutter-npp-cpp-plugin)
+
 A [cookiecutter](https://github.com/audreyr/cookiecutter) C++ Notepad++ plugin template.
 
 ## Usage
