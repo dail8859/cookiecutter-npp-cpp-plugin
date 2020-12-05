@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio {{ '15' if cookiecutter.vs_version == 'VS2017' else '14' }}
-VisualStudioVersion = {{ '15.0.28307.757' if cookiecutter.vs_version == 'VS2017' else '14.0.25420.1' }}
+# Visual Studio {{ '16' if cookiecutter.vs_version == 'VS2019' else '15' if cookiecutter.vs_version == 'VS2017' else '14' }}
+VisualStudioVersion = {{ '16.0.29503.13' if cookiecutter.vs_version == 'VS2019' else '15.0.28307.757' if cookiecutter.vs_version == 'VS2017' else '14.0.25420.1' }}
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "{{ cookiecutter.plugin_slug }}", "src\{{ cookiecutter.plugin_slug }}.vcxproj", "{1590D7CD-7D3A-4AB7-A355-EE02F7FB987D}"
 EndProject

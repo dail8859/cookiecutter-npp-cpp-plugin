@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="{{ '15.0' if cookiecutter.vs_version == 'VS2017' else '14.0' }}" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="{{ '16.0' if cookiecutter.vs_version == 'VS2019' else '15.0' if cookiecutter.vs_version == 'VS2017' else '14.0' }}" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LocalDebuggerCommand>{{ cookiecutter.npp_path_x86 }}\notepad++.exe</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>

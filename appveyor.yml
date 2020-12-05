@@ -1,15 +1,26 @@
 version: 1.0.0.{build}
-image: Visual Studio 2017
+
+environment:
+  matrix:
+    - VS_VERSION: 2017
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      PYTHONPATH: C:\Python38-x64
+
+    - VS_VERSION: 2019
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      PYTHONPATH: C:\Python39-x64
 
 platform:
   - x64
   - Win32
 
-configuration:
-  - Release
-  - Debug
+#configuration:
+#  - Release
+#  - Debug
 
 install:
+  - set PATH=%PYTHONPATH%;%PYTHONPATH%\Scripts;%PATH%
+  - python -m pip install --upgrade pip
   - pip install cookiecutter
   - cd "%APPVEYOR_BUILD_FOLDER%\.."
   - cookiecutter cookiecutter-npp-cpp-plugin --no-input
@@ -20,7 +31,7 @@ install:
   - if "%platform%"=="Win32" set archi=x86
   - if "%platform%"=="Win32" set build_platform=Win32
 
-  - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %archi%
+  - call "C:\Program Files (x86)\Microsoft Visual Studio\%VS_VERSION%\Community\VC\Auxiliary\Build\vcvarsall.bat" %archi%
 
 build:
   parallel: true
@@ -28,4 +39,5 @@ build:
 
 build_script:
   - cd "%APPVEYOR_BUILD_FOLDER%\..\MyPlugin"
-  - msbuild MyPlugin.sln /p:Configuration="%configuration%" /p:Platform="%build_platform%" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - msbuild MyPlugin.sln /m /p:Configuration="Release" /p:Platform="%build_platform%" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - msbuild MyPlugin.sln /m /p:Configuration="Debug" /p:Platform="%build_platform%" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"

@@ -6,5 +6,5 @@
 	"email": "john.smith@email.com",
 	"npp_path_x86": "C:\\Program Files (x86)\\Notepad++",
 	"npp_path_x64": "C:\\Program Files\\Notepad++",
-	"vs_version":["VS2017", "VS2015"]
+	"vs_version":["VS2017", "VS2015", "VS2019"]
 }
